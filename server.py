@@ -42,10 +42,10 @@ def main():
 
          cs = ss.accept()[0] 
          request = cs.recv(1024).decode('ascii')
-	     print request
+	 print request
          reply = http_handle(request)
          
-	     cs.send(reply)
+	 cs.send(reply)
 
          print("\n\nReceived request")
          print("======================")
@@ -76,8 +76,8 @@ def http_handle(request_string):
     else: 
 	   reply = c[1]
     try:
-    	with open(reply, 'rb') as myfile:
-    	   data = myfile.read()
+    	    with open(reply, 'rb') as myfile:
+    	    	data = myfile.read()
    	    if(reply.endswith(".html")):
 		  tipo = 'text/html'
 	    if(reply.endswith(".jpg")):
@@ -85,10 +85,10 @@ def http_handle(request_string):
 	    if(reply.endswith(".gif")):
 		  tipo = 'image/gif'
 	    if(reply.endswith(".txt")):
-          tipo = 'text/txt'
+          	tipo = 'text/txt'
 	    if(reply.endswith(".py")):
-          tipo = 'text/py'
-    	headers = "HTTP/1.1 200 OK\n" + "Content-Type: "+tipo+"\n" + "Connection:close\n" + "\n"
+          	tipo = 'text/py'
+    	    headers = "HTTP/1.1 200 OK\n" + "Content-Type: "+tipo+"\n" + "Connection:close\n" + "\n"
    	    answer = "%s%s\n"%(headers, data)
    	    return answer
     except IOError:
